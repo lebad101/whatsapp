@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WA Forwarder Pro v3.1</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>WA Forwarder Pro v3.1</h1>
+    <div id="status-badge">الحالة: —</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>تسجيل الدخول عبر QR</h2>
+      <div class="qr-wrap"><img id="qr" alt="QR" /></div>
+      <div class="row">
+        <button id="btn-refresh-qr">تحديث QR</button>
+        <button id="btn-logout">تسجيل خروج</button>
+        <button id="btn-restart">إعادة تشغيل العميل</button>
+        <button id="btn-health">فحص Health</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>المجموعات والإعدادات</h2>
+      <div class="row">
+        <label><input type="checkbox" id="chk-archived" /> عرض المؤرشفة</label>
+        <button id="btn-load-groups">تحميل المجموعات</button>
+        <input type="text" id="search" placeholder="ابحث عن مجموعة..." />
+        <span id="sel-count" class="badge">0 محدد</span>
+      </div>
+      <div class="row">
+        <label>قناة/مجموعة المصدر</label>
+        <select id="sel-source"></select>
+      </div>
+      <div class="row">
+        <label>الأهداف (متعدد):</label>
+        <div class="row compact">
+          <button id="btn-select-all">اختيار الكل</button>
+          <button id="btn-unselect-all">إلغاء الكل</button>
+        </div>
+      </div>
+      <div id="targets"></div>
+      <div class="row">
+        <label><input type="checkbox" id="chk-auto-forward" /> تفعيل الفورورد التلقائي</label>
+        <label>تأخير (ms/رسالة)</label>
+        <input type="number" id="throttle" value="800" min="0" step="50" />
+      </div>
+      <div class="row">
+        <button id="btn-save-config">حفظ الإعدادات</button>
+        <button id="btn-load-config">قراءة الإعدادات</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>إرسال يدوي</h2>
+      <div class="row">
+        <input type="text" id="test-text" placeholder="نص الرسالة" />
+        <button id="btn-send-test">إرسال نص إلى الأهداف المختارة</button>
+      </div>
+      <div class="row">
+        <input type="file" id="media-file" />
+        <input type="text" id="media-caption" placeholder="كابشن (اختياري)" />
+        <button id="btn-send-media">إرسال ميديا إلى الأهداف المختارة</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Forward عبر Message ID</h2>
+      <div class="row">
+        <input type="text" id="msg-id" placeholder="أدخل Message ID" />
+        <button id="btn-forward-id">عمل Forward إلى الأهداف المختارة</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Logs</h2>
+      <pre id="logs" class="logs"></pre>
+      <div class="row"><button id="btn-refresh-logs">تحديث اللوجز</button></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>المعرّف: <span id="me">—</span></small>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

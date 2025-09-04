@@ -1,0 +1,6 @@
+{
+  "sourceChatId": "",
+  "targets": [],
+  "sendThrottleMs": 800,
+  "autoForwardEnabled": true
+}
