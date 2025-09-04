@@ -8,6 +8,18 @@ const QRCode = require("qrcode");
 const winston = require("winston");
 const { Client, LocalAuth, MessageMedia } = require("whatsapp-web.js");
 require("dotenv").config();
+puppeteer: {
+  headless: true,
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process'
+  ]
+}
 
 // ---- ENV ----
 const PORT = parseInt(process.env.PORT || "3001", 10);
